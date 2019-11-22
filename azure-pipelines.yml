@@ -12,9 +12,9 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '312de845-213f-42b1-82e1-9c1ba23fb247'
-  imageRepository: 'redhabazurepipelinescanaryks'
+  imageRepository: 'azure-pipelines-canary-k8s'
   containerRegistry: 'acrk8sredha.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'app/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'acrk8sredhab188-auth'
 
@@ -36,10 +36,10 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageRepository)
+        command: buildAndPush
+        dockerfile: $(dockerfilePath)
         tags: |
           $(tag)
           
