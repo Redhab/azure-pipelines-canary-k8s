@@ -11,12 +11,12 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '312de845-213f-42b1-82e1-9c1ba23fb247'
-  imageRepository: 'azure-pipelines-canary-k8s'
+  #dockerRegistryServiceConnection: '312de845-213f-42b1-82e1-9c1ba23fb247'
+  dockerRegistryServiceConnection: 'acrk8sredha'
   containerRegistry: 'acrk8sredha.azurecr.io'
+  imageRepository: 'azure-pipelines-canary-k8s'
   dockerfilePath: 'app/Dockerfile'
   tag: '$(Build.BuildId)'
-  imagePullSecret: 'acrk8sredhab188-auth'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
